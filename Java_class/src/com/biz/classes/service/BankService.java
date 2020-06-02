@@ -10,7 +10,7 @@ public class BankService {
 	
 	public void bankList(BankVO[] bankList) {
 		System.out.println(d_line);
-		System.out.println("계좌번호\t날짜\t\t입금\t출금\t잔액");
+		System.out.println("계좌번호\t날짜\t입금\t출금\t잔액");
 		System.out.println(s_line);
 		
 		for(int i=0;i<bankList.length;i++) {

@@ -2,6 +2,7 @@ package com.biz.classes;
 
 import com.biz.classes.model.BankVO;
 import com.biz.classes.service.BankService;
+import com.biz.classes.service.BankServiceV2;
 
 public class ClassEx_12 {
 	public static void main(String[] args) {
@@ -32,5 +33,10 @@ public class ClassEx_12 {
 		
 		BankService bankService = new BankService();
 		bankService.bankList(bankList);
+		
+		//BankServiceV2 클래스를 사용해서
+		// bankServiceV2라는 변수를 선언
+		// bankServiceV2 변수를 '객체(object), 인스턴스(instance)'라고 한다.
+		BankServiceV2 bankServiceV2 = new BankServiceV2();
 	}
 }
