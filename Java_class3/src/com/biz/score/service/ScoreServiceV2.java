@@ -2,7 +2,7 @@ package com.biz.score.service;
 
 import com.biz.score.vo.ScoreVO;
 
-public class ScoreServiceV1 {
+public class ScoreServiceV2 {
 	
 	/*
 	 * scores 인스턴스배열ㅇ르 필드변수로 선언한 이유
@@ -24,22 +24,14 @@ public class ScoreServiceV1 {
 	String s_line = line.single(55);
 
 	/*
-	 * ScoreServiceV1 클래스를 사용해서 어떤 연산을 수행하려고 할때
-	 * 반드시 setScore() method를 통해서 scores값을 
-	 * 매개변수로 주입을 해주어야 한다.
-	 * 그렇지 않으면 scores 인스턴스 필드변수가 아직 준비가 안된 상태이기 때문에
-	 * 이후에 호출되는 method()들에서 NullPointerException이 발생한다.
-	 */
-	public void setScoreList(ScoreVO[] scoreList) {
-		this.scoreList = scoreList;
-	}
-
-	/*
 	 * 필드변수로 scores 선언되어 있기 때문에
 	 * 학생 총점과 평균을 계산한 수
 	 * 어디에 저장해야 할지를 고민하지 않아도 된다.
 	 */
-	public void scoreSum() {
+	public void scoreSum(ScoreVO[] scoreList) {
+		
+		this.scoreList = scoreList;
+		
 		for (int i = 0; i < scoreList.length; i++) {
 			scoreList[i].setIntSum(scoreList[i].getIntKor() + scoreList[i].getIntEng() + scoreList[i].getIntMath()
 					+ scoreList[i].getIntMusic());
