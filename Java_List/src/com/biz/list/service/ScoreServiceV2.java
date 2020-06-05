@@ -11,7 +11,7 @@ public class ScoreServiceV2 {
 
 	int sum = 0;
 	int avg = 0;
-	int scoreSize = 0;
+	int subjectNum = 3;
 
 	public void stSum(ScoreVO sVO) {
 		this.sVO = sVO;
@@ -21,6 +21,6 @@ public class ScoreServiceV2 {
 
 	public void stAvg() {
 		sum = sVO.getStSum();
-		sVO.setStAvg(sum / 3);
+		sVO.setStAvg(sum / subjectNum);
 	}
 }

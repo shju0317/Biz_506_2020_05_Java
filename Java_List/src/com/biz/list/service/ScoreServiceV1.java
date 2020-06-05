@@ -12,12 +12,16 @@ public class ScoreServiceV1 {
 	 */
 	ScoreServiceV2 sService2 = new ScoreServiceV2();
 	
+	LineService line = new LineService();
+	String d_line = line.do_line(50);
+	String s_line = line.single(50);
+	
 	public void scoreList(List<ScoreVO> scores) {
-		System.out.println("============================================");
+		System.out.println(d_line);
 		System.out.println("성적리스트");
-		System.out.println("--------------------------------------------");
+		System.out.println(s_line);
 		System.out.println("학번\t국어\t영어\t수학\t총점\t평균");
-		System.out.println("--------------------------------------------");
+		System.out.println(s_line);
 		
 		int scoreSize = scores.size();
 		
@@ -33,7 +37,7 @@ public class ScoreServiceV1 {
 			sService2.stAvg();
 			System.out.println(sVO.getStAvg());
 		}
-		System.out.println("=============================================");
+		System.out.println(d_line);
 		
 	}
 }
