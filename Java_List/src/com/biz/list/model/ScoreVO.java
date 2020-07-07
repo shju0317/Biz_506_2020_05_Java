@@ -9,6 +9,15 @@ public class ScoreVO {
 	private int stSum;
 	private int stAvg;
 	
+	private int scoreSize;
+	
+	
+	public int getScoreSize() {
+		return scoreSize;
+	}
+	public void setScoreSize(int scoreSize) {
+		this.scoreSize = scoreSize;
+	}
 	public int getStSum() {
 		return stSum;
 	}

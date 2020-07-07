@@ -20,7 +20,7 @@ import com.biz.book.domain.BookVO;
 
 public class BookServiceImplV1 implements BookService{
 	protected List<BookVO> bookList;
-	BookVO bVO;
+
 	
 	public BookServiceImplV1(){
 		bookList = new ArrayList<BookVO>();
@@ -96,7 +96,7 @@ public class BookServiceImplV1 implements BookService{
 			 */
 			bookVO.setPrice(intPrice);
 			
-			bookList.add(bVO);
+			bookList.add(bookVO);
 			return true; // '모든 항목의 입력완료되었으니 다음 도서정보를 입력받겠다'는 신호를 호출한 곳에 return(알림)
 		}	
 	}

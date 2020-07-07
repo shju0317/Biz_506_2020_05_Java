@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.biz.domain.scoreVO;
+import com.biz.score.domain.scoreVO;
 
 public class ScoreService01 {
 	List<scoreVO> scoreList;
@@ -38,7 +38,7 @@ public class ScoreService01 {
 		String strMath = scan.nextLine();
 		int intMath = Integer.valueOf(strMath);
 		
-		scoreVO sVO = new scoreVO(intMath, intMath, intMath, intMath, intMath, intMath);
+		scoreVO sVO = new scoreVO();
 		sVO.setIntStudentId(intStudentId);
 		sVO.setIntKor(intKor);
 		sVO.setIntEng(intEng);
@@ -54,6 +54,7 @@ public class ScoreService01 {
 		System.out.println("성적 리스트");
 		System.out.println("-------------------------------------------------");
 		System.out.println("학번\t국어\t수학\t영어\t총합\t평균");
+		System.out.println("-------------------------------------------------");
 		
 		int scoreSize = scoreList.size();
 		
@@ -65,6 +66,6 @@ public class ScoreService01 {
 			System.out.printf("%d\t%d\t%d\t%d\t%d\t%d\n", vo.getIntStudentId(), vo.getIntKor(), vo.getIntEng(), vo.getIntMath(), intSum, intAvg);
 		}
 		
-		System.out.println("-------------------------------------------------");
+		System.out.println("=================================================");
 	}
 }
