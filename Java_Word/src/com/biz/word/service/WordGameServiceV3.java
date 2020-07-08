@@ -41,10 +41,12 @@ public class WordGameServiceV3 extends WordGameServiceV2{
 
 			Collections.shuffle(wordList);
 
+			System.out.println("======================================================");
 			System.out.println("다음 알파벳을 단어 순서에 맞게 나열하시오(END:종료)");
 			System.out.println(wordList);
 			String strInput = scan.nextLine();
-
+			game++;
+			
 			if (strInput.equalsIgnoreCase("END")) {
 				break;
 			}

@@ -60,9 +60,6 @@ public class StudentServiceImplV1 implements StudentService{
 			System.out.print("학번입력(종료:END)>> ");
 			String strNum = scan.nextLine();
 			
-			if(strNum.equalsIgnoreCase("END")) {
-				return false;
-			}
 			stdVO.setNum(strNum);
 			
 			System.out.print("이름입력>> ");
