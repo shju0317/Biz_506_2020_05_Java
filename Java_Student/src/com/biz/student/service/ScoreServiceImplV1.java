@@ -16,53 +16,56 @@ public class ScoreServiceImplV1 implements ScoreService {
 	List<ScoreVO> scoreList;
 
 	public ScoreServiceImplV1() {
-		studentList = new ArrayList<StudentVO>();
+		StudentService stService = new StudentServiceImplV5();
+		//studentList = new ArrayList<StudentVO>();
+		studentList = stService.getStudentList();
 		scoreList = new ArrayList<ScoreVO>();
 	}
 
 	@Override
 	public void inputStudent() {
-		String studentFile = "src/com/biz/student/exec/student.txt";
-
-		FileReader fileReader = null;
-		BufferedReader buffer = null;
-
-		try {
-			fileReader = new FileReader(studentFile);
-			buffer = new BufferedReader(fileReader);
-
-			String reader = "";
-			while (true) {
-				reader = buffer.readLine();
-				if (reader == null) {
-					break;
-				}
-				// System.out.println(reader);
-
-				// 읽어들인 라인을 분해하여 학생정보로 변환
-				String[] students = reader.split(":");
-
-				StudentVO studentVO = new StudentVO();
-				studentVO.setNum(students[SplitPos.STUDENT.ST_NUM]);
-				studentVO.setName(students[SplitPos.STUDENT.ST_NAME]);
-				studentVO.setGrade(Integer.valueOf(students[SplitPos.STUDENT.ST_GRADE]));
-				studentVO.setDept(students[SplitPos.STUDENT.ST_DEPT]);
-
-				studentList.add(studentVO);
-
-			}
-
-			// 파일을 읽기, 쓰기로 열었으면 모두 닫아서(close) 종료해야 한다.
-			buffer.close();
-			fileReader.close();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		String studentFile = "src/com/biz/student/exec/student.txt";
+//
+//		FileReader fileReader = null;
+//		BufferedReader buffer = null;
+//
+//		try {
+//			fileReader = new FileReader(studentFile);
+//			buffer = new BufferedReader(fileReader);
+//
+//			String reader = "";
+//			while (true) {
+//				reader = buffer.readLine();
+//				if (reader == null) {
+//					break;
+//				}
+//				// System.out.println(reader);
+//
+//				// 읽어들인 라인을 분해하여 학생정보로 변환
+//				String[] students = reader.split(":");
+//
+//				StudentVO studentVO = new StudentVO();
+//				studentVO.setNum(students[SplitPos.STUDENT.ST_NUM]);
+//				studentVO.setName(students[SplitPos.STUDENT.ST_NAME]);
+//				studentVO.setGrade(Integer.valueOf(students[SplitPos.STUDENT.ST_GRADE]));
+//				studentVO.setDept(students[SplitPos.STUDENT.ST_DEPT]);
+//
+//				studentList.add(studentVO);
+//
+//			}
+//
+//			// 파일을 읽기, 쓰기로 열었으면 모두 닫아서(close) 종료해야 한다.
+//			buffer.close();
+//			fileReader.close();
+//
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 
 	@Override
@@ -168,14 +171,23 @@ public class ScoreServiceImplV1 implements ScoreService {
 			ScoreVO scoreVO = scoreList.get(i);
 			
 			// score의 학번으로 studentList에서 찾기
+			
+			boolean stdChk = false;
+			
 			for (int j = 0; j < studentSize; j++) {
 				StudentVO studentVO = studentList.get(j);
 
 				// 학번이 같은 학생의 정보를 찾았으면
 				if (scoreVO.getNum().equals(studentVO.getNum())) {
 					listWithName(scoreVO, studentVO);
+					stdChk = true;
 					break;
 				}
+			}
+			
+			// stdChk == true : 학생을 찾았음, false : 학생없음
+			if(!stdChk) {
+				System.out.println("[없음]" + "\t");
 			}
 		}
 		

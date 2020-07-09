@@ -40,6 +40,8 @@ public class BankServiceImplV3_answer extends BankServiceImplV2{
 		// 새로운 계좌번호를 선택했을 때
 		// 새로운 balance정보를 가져오기 위해서
 		// 기존의 accList를 모두 제거하기
+		// 기존 List를 제거하지 않으면 계좌를 선택할 때마다
+		// 리스트가 추가되어 나타나게 된다.
 		accList.clear();
 
 		FileReader fileReader = null;
@@ -107,7 +109,7 @@ public class BankServiceImplV3_answer extends BankServiceImplV2{
 				balance += accVO.getInput();
 				balance -= accVO.getOutput();
 				
-				// 거래일지ㅏ, 입금, 출급 잔액
+				// 거래일자, 입금, 출급 잔액
 				outPut.printf("%s,%d,%d,%d\n", accVO.getDate(), accVO.getInput(), accVO.getOutput(), balance);
 			}
 			
